@@ -12,22 +12,8 @@ public:
 	virtual ~Token() {}
 	virtual int eval_to_int() = 0;
 	virtual std::string eval_to_str() = 0;
-};
 
-class Variable : public Token
-{
-private:
-	std::string name;
-	Token* value;
-public:
-	Variable(std::string var_name, Token* token): name(var_name), value(token) {}
-
-	int eval_to_int() override {
-		return value->eval_to_int();
-	}
-	std::string eval_to_str() override {
-		return value->eval_to_str();
-	}
+	bool isVariable = false;
 };
 
 class Numero: public Token
@@ -100,8 +86,10 @@ class Operacion : public Token
 protected:
 	Token* elem1;
 	Token* elem2;
+	std::string name;
 public:
 	Operacion(Token* el1, Token* el2): elem1(el1), elem2(el2) {}
+	Operacion(std::string var_name, Token* elem): name(var_name), elem1(elem) {}
 
 	virtual int eval_to_int() {
 		return 0;

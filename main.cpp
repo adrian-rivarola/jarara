@@ -1,20 +1,33 @@
 #include <iostream>
 #include <vector>
-#include "filereader/filereader.cpp"
-#include "parser/parser.cpp"
-#include "token/token.cpp"
+#include "Compilador.cpp"
+using namespace std;
 
 int main() {
-	auto filename = get_user_input();
-	auto file_lines = read_from_file(filename);
+	Compilador jarara;
+	int opc;
 
-	std::vector<Token*> tokens;
-	
-	for (std::string line : file_lines)
-		tokens.push_back(parseExpression(line));
+	cout << "   ____  ____    _____   ____    _____   ____    \n";
+	cout << "  |    ||    \\  |     | |    \\  |     | |    \\   \n";
+	cout << " _|    ||     \\ |     \\ |     \\ |     \\ |     \\  \n";
+	cout << "|______||__|\\__\\|__|\\__\\|__|\\__\\|__|\\__\\|__|\\__\\ \n";
 
-	for (Token* token : tokens) 
-		token->eval_to_str();
-	
+	cout << "\n";
+
+	cout << "+-----------------------------------------------+\n";
+	cout << "| 1- Leer Archivo                               |\n";
+	cout << "| 2- Interprete en consola                      |\n";
+	cout << "| 3- Salir                                      |\n";
+	cout << "+-----------------------------------------------+\n";
+
+	cout << "> ";
+	cin >> opc;
+	cout << "+-----------------------------------------------+\n";
+
+	if (opc == 1) 
+		jarara.compile_from_file();
+	else if (opc == 2)
+		jarara.live_repl();
+
 	return 1;
 }

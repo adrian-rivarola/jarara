@@ -7,7 +7,7 @@
 #ifndef PARSER
 #define PARSER
 
-std::regex numeros ("^\\d+$");
+std::regex numeros("^\\d+$");
 
 Token* parseExpression(std::string expression) 
 {
@@ -21,12 +21,9 @@ Token* parseExpression(std::string expression)
 	if (std::regex_match(expression, numeros)) {
 		return new Numero(std::stoi(expression));
 	}
-
 	
 	std::string func = expression.substr(0, 3);
 	if (func == "inp") return new UserInput();
-
-	if (n < 4 || expression[4] != '<') return new Texto("");
 
 	std::string args = expression.substr(4, n-5);
 
