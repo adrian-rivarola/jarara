@@ -24,7 +24,9 @@ std::vector<std::string> read_from_file(std::string fileName) {
 	std::ifstream file (fileName);
 
 	if (!file.is_open()) {
-		std::cout << "No se puede abrir " << fileName << std::endl;
+		std::cout << "+-----------------------------------------------+\n";
+		std::cout << "| No se puede abrir " << fileName << std::endl;
+		std::cout << "+-----------------------------------------------+\n";
 		return {};
 	}
 
@@ -43,17 +45,21 @@ std::string get_user_input() {
 	std::string fileName;
 	bool valid_input = true;
 
+	std::cout << "+-----------------------------------------------+\n";
+	std::cout << "|        Ingresar direccion del archivo:        |\n";
+	std::cout << "+-----------------------------------------------+\n";
+
 	do {
 		if (!valid_input) {
-			std::cout << "Nombre de archivo no valido" << std::endl;
+			std::cout << "Nombre de archivo no valido\n";
 		}
-		std::cout << "Ingresar direccion del archivo:\n> ";
+		std::cout << "> ";
 		std::cin >> fileName;
 
 		clean_input(fileName);
 		valid_input = is_valid(fileName);
 
-	} while(!valid_input); 
+	} while(!valid_input);
 	
 	return fileName;
 }

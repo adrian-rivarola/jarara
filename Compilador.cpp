@@ -14,17 +14,28 @@ public:
 		auto fileName = get_user_input();
 		auto lines_read = read_from_file(fileName);
 
+		std::cout << "+-----------------------------------------------+\n";
+
 		std::vector<Token*> tokens; 
 
 		for (std::string line : lines_read)
 			tokens.push_back(parseExpression(line));
 
-		for (auto token : tokens)
+		for (auto token : tokens) {
 			token->eval_to_str();
+			delete token;
+		}
+
+		std::cout << "+-----------------------------------------------+\n";
+
+		std::cout<<"Press ENTER to exit";
+		std::cin.ignore().get();
+
 	}
 
 	void live_repl() {
 
+		std::cout << "+-----------------------------------------------+\n";
 		std::cout << "|                 jarara v1.0                   |\n";
 		std::cout << "+-----------------------------------------------+\n";
 

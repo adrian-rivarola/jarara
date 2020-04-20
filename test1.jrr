@@ -1,2 +1,2 @@
-out<,ingresar_num >,>
-out<sum<15_inp<>>>
+out<,ingresar dos numeros para sumar:,>
+out<sum<inp<>_inp<>>>

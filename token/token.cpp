@@ -12,8 +12,6 @@ public:
 	virtual ~Token() {}
 	virtual int eval_to_int() = 0;
 	virtual std::string eval_to_str() = 0;
-
-	bool isVariable = false;
 };
 
 class Numero: public Token
